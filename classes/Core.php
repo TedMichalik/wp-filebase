@@ -229,7 +229,7 @@ class WPFB_Core
 
         $filepage_query = (
             (isset($query->query_vars['post_type']) && $query->query_vars['post_type'] == 'wpfb_filepage')
-            || isset($query->tax_query->queried_terms['wpfb_file_category']))
+            || isset($query->tax_query->queried_terms['wpfb_file_category'])
         );
 
         if (WPFB_Core::$settings->search_integration && !empty($wp_query->query_vars['s'])) {
