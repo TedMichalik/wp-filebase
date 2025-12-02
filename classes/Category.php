@@ -319,17 +319,7 @@ class WPFB_Category extends WPFB_Item
         return parent::CurUserCanEdit($user) ;
     }
 
-    /**
-     * @return null|WPFB_RemoteSync
-     */
-    function getCloudSync() {
-        wpfb_loadclass('RemoteSync');
-        $rs = WPFB_RemoteSync::GetByCat($this->GetId());
-        if($rs) return $rs;
-        $parent = $this->GetParent();
-        return $parent ? $parent->getCloudSync() : null;
-    }
-
 }
+
 
 ?>
