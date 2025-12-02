@@ -79,7 +79,7 @@ class WPFB_Admin {
 		$cat->cat_name = trim($cat_name);
 		$cat->cat_description = trim($cat_description);
 		$cat->cat_exclude_browser = (int) !empty($cat_exclude_browser);
-		$cat->cat_order = 0 + ($cat_order);
+		$cat->cat_order = (int)$cat_order;
 		if ($data->cat_wp_term_id > -1)
 			$cat->cat_wp_term_id = 0 + $data->cat_wp_term_id;
 
@@ -96,12 +96,6 @@ class WPFB_Admin {
 
 		if ($add_existing)
 			$cat->cat_folder = $cat_folder;
-
-		// renaming cloud synced categories not supported yet
-		if($update && ($cat->cat_parent != $cat_parent || $cat->cat_folder != $cat_folder)) {
-			if($cat->GetParent() && $cat->GetParent()->getCloudSync())
-				return array('error' => __('Cannot change category inside a cloud sync!', 'wp-filebase'));
-		}
 
 		// this will (eventually) inherit permissions:
 		$result = $cat->ChangeCategoryOrName($cat_parent, $cat_folder, $add_existing);
@@ -1243,3 +1237,4 @@ class WPFB_Admin {
 	}
 
 }
+
