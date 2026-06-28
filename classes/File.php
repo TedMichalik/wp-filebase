@@ -7,6 +7,8 @@ class WPFB_File extends WPFB_Item
 
     const THUMB_REGEX = '/^-([0-9]+)x([0-9]+)\.(jpg|jpeg|png|gif)$/i';
 
+    public $file_custom_cf1;
+
     var $file_id = 0;
     var $file_name;
     var $file_name_original;
